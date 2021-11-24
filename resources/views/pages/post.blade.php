@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('title', 'Post')
 @section('content')
-    <div class="post">
+<article>
+    <h1>
+        {{ $post->title }}
+    </h1>
+    @include('components.partial')
 
-        <div class="decor" style="text-decoration-color:{{ $bg }}">
-            {{ ucwords($title) }}</div>
-        <p>
-            {{ $body }}
-        </p>
-        @include('components.button')
-    </div>
+</article>
+
+<div class="back">
+    <a href="{{ route('blog') }}">Go Back</a>
+</div>
 
 @endsection

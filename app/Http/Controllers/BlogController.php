@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function showBlog(Request $request)
     {
-        return view('pages.blog');
+
+        return view('pages.blog',['posts' => Post::SimplePaginate(5)]);
 
     }
-    public function showPost(Request $request)
+    public function showPost(Post $post)
     {
-        $data['slug'] = $request->slug;
-        $data['body'] = $request->body;
-        $data['bg'] = $request->bg;
-        $data['title'] = str_replace("-"," ", $request->slug);
-        return view('pages.post',$data);
+        return view('pages.post',['post' => $post]);
     }
 }

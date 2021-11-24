@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/blog',[BlogController::class,'showBlog'])->name('blog');
-Route::get('/post/{slug}',[BlogController::class,'showPost'])->name('viewPosts');
+Route::get('/post/{post:slug}',[BlogController::class,'showPost'])->name('viewPosts');
