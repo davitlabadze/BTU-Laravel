@@ -6,8 +6,8 @@
     <div class="card-header">
         <h3>Welcome to Technology Pawnshop</h3>
     </div>
-{{-- </div> --}}
     <div class="card-body">
+
         <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
@@ -26,9 +26,10 @@
                         <td ><input type="text"  required name="category" class="form-control"/></td>
                         <td><input type="text" required name="name" class="form-control"/></td>
                         <td><input type="number" required name="price" class="form-control"/></td>
-                        <td colspan="2"><button class="btn btn-success">add post</button></td>
+                        <td><button class="btn btn-success">add post</button></td>
                     </tr>
                 </form>
+
             </tbody>
             @foreach ($posts as $post )
                 <tr>
@@ -51,10 +52,15 @@
                     </td>
                 </tr>
             @endforeach
+
     </table>
     <div class="d-flex justify-content-center">
         {{ $posts->links("pagination::bootstrap-4") }}
-      </div>
+
+    </div>
+    <div class=" text-center">
+        <a href="{{ route('trash.index', ['view_deleted' => 'DeletedRecords']) }}" class="btn btn-primary btn-xl">View Deleted Post</a>
+    </div>
 </div>
 @endsection
 

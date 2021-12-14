@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id','DESC')->paginate(5);
+        $posts = Post::orderBy('id','DESC')->withoutTrashed()->paginate(5);
         return view('posts-page',['posts'=>$posts]);
     }
 
@@ -51,9 +51,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+      //
     }
 
     /**
@@ -98,4 +98,5 @@ class PostController extends Controller
         Post::where('id', $id)->delete();
         return redirect()->route('posts.index');
     }
+
 }

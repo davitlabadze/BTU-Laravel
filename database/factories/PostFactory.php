@@ -18,7 +18,7 @@ class PostFactory extends Factory
         return [
             'category' => $this->faker->randomElement($array = ['mobile']),
             'name'=> $this->faker->randomElement($array = ['sony','iphone6','iphone7','samsung galaxy','iphone12','iphone11']),
-            'price'=>$this->faker->numberBetween($min = 500, $max = 5000)
+            'price'=>$this->faker->numberBetween($min = 500, $max = 5000),
         ];
     }
 }
