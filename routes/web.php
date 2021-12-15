@@ -16,9 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('tasks',TaskController::class);
-
-
-// Route::delete('trash/{id}', [TrashController::class, 'delete'])->name('trash.delete');
-// Route::get('trash/restore/one/{id}', [TrashController::class, 'restore'])->name('trash.restore');
 Route::delete('trash/delete_all', [TrashController::class, 'delete_all'])->name('trash.delete_all');
 
