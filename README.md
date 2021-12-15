@@ -29,4 +29,4 @@
 
 ## Resource
 
-* [Tailwindcss]('https://tailwindcss.com/')
+* [Tailwindcss](https://tailwindcss.com)
