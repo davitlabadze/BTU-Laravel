@@ -33,7 +33,7 @@
                                     />
                                     <a href="javascript:void(0);"
                                     @click="addVisitedCountry"
-                                    class="px-1 py-3 ml-3 text-xl font-semibold text-white bg-green-400 rounded shadow-xl hover:bg-green-500 ">ADD</a>
+                                    class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
                                    </div>
 
                                     <div v-for="vr in visitedCountries" :key="vr.id0" class="mt-5 ">
