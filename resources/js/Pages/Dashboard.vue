@@ -18,23 +18,23 @@
                                 <h3 class="mt-2 text-xl text-center text-indigo-500">Visited Coutry</h3>
                                 <div class="flex p-6 bg-white border-b border-gray-200">
                                    <div class="flex">
-                                    <Select2
-                                    class=" w-96"
-                                    v-model="SelectedVisitedCuntry"
-                                    :settings="{
-                                        width:'100%',
-                                        ajax: {
-                                            url: '/api/countries/list',
-                                            dataType: 'json'
-                                        },
-                                    }"
+                                        <Select2
+                                        class=" w-96"
+                                        v-model="SelectedVisitedCuntry"
+                                        :settings="{
+                                            width:'100%',
+                                            ajax: {
+                                                url: '/api/countries/list',
+                                                dataType: 'json'
+                                            },
+                                        }"
 
-                                    @select="VisitedCoutrySelected($event)"
-                                    />
-                                    <a href="javascript:void(0);"
-                                    @click="addVisitedCountry"
-                                    class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
-                                   </div>
+                                        @select="VisitedCoutrySelected($event)"
+                                        />
+                                        <a href="javascript:void(0);"
+                                        @click="addVisitedCountry"
+                                        class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
+                                    </div>
 
                                     <div v-for="vr in visitedCountries" :key="vr.id0" class="mt-5 ">
                                         <span class="block w-full pt-3 mb-1 border-b-2">{{ vr.name }}</span>
@@ -44,18 +44,24 @@
                             <div class="p-2 rounded shadow">
                                 <h3 class="mt-2 text-xl text-center text-indigo-500">Countries to visit</h3>
                                 <div class="p-6 bg-white border-b border-gray-200">
-                                    <Select2
-                                    v-model="SelectedCountryToVisit"
-                                    :settings="{
-                                        width:'100%',
-                                        ajax: {
-                                            url: '/api/countries/list',
-                                            dataType: 'json'
-                                        },
-                                    }"
+                                    <div class="flex">
+                                        <Select2
+                                        class=" w-96"
+                                        v-model="SelectedCountryToVisit"
+                                        :settings="{
+                                            width:'100%',
+                                            ajax: {
+                                                url: '/api/countries/list',
+                                                dataType: 'json'
+                                            },
+                                        }"
 
-                                    @select="CountryToVisitSelected($event)"
-                                    />
+                                        @select="CountryToVisitSelected($event)"
+                                        />
+                                        <a href="javascript:void(0);"
+                                        @click="addVisitedCountry"
+                                        class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
+                                    </div>
                                      <div v-for="ctv in countriesToVisit" :key="ctv.id0" class="mt-5 ">
                                         <span class="block w-full pt-3 mb-1 border-b-2">{{ ctv.name }}</span>
                                     </div>
@@ -106,9 +112,9 @@ export default {
         },
         getToVisitCoutry(){
             axios.get('/api/countries/tovisit')
-                        .then((response) => {
-                            this.countriesToVisit = response.data;
-                        });
+                .then((response) => {
+                    this.countriesToVisit = response.data;
+                });
         },
         addVisitedCountry(){
             if (this.SelectedVisitedCuntry !== '') {
