@@ -29,7 +29,7 @@
                                             },
                                         }"
 
-                                        @select="VisitedCoutrySelected($event)"
+                                        @select="VisitedCountrySelected($event)"
                                         />
                                         <a href="javascript:void(0);"
                                         @click="addVisitedCountry"
@@ -98,13 +98,13 @@ export default {
         }
     },
     methods: {
-        VisitedCoutrySelected({id, text}){
-            // console.log({id, text})
-        },
-        CountryToVisitSelected({id, text}){
-            // console.log({id, text})
-        },
-        getVisitedCoutry(){
+        // VisitedCountrySelected({id, text}){
+        //     // console.log({id, text})
+        // },
+        // CountryToVisitSelected({id, text}){
+        //     // console.log({id, text})
+        // },
+        getVisitedCountry(){
             axios.get('/api/countries/visited')
             .then((response) => {
                 this.visitedCoutries = response.data;
@@ -121,7 +121,7 @@ export default {
                 axios.post('/api/add-visited-country',{
                     countryID: this.SelectedVisitedCuntry
                 }).then((response) => {
-                    this.getVisitedCoutry();
+                    this.getVisitedCountry();
                 }).catch(function(error){
                     console.log(error)
                 })
@@ -131,7 +131,7 @@ export default {
         }
     },
     created(){
-        this.getVisitedCoutry();
+        this.getVisitedCountry();
         this.getToVisitCoutry();
     }
 }

@@ -19931,17 +19931,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    VisitedCoutrySelected: function VisitedCoutrySelected(_ref) {// console.log({id, text})
-
-      var id = _ref.id,
-          text = _ref.text;
-    },
-    CountryToVisitSelected: function CountryToVisitSelected(_ref2) {// console.log({id, text})
-
-      var id = _ref2.id,
-          text = _ref2.text;
-    },
-    getVisitedCoutry: function getVisitedCoutry() {
+    // VisitedCountrySelected({id, text}){
+    //     // console.log({id, text})
+    // },
+    // CountryToVisitSelected({id, text}){
+    //     // console.log({id, text})
+    // },
+    getVisitedCountry: function getVisitedCountry() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/countries/visited').then(function (response) {
@@ -19962,7 +19958,7 @@ __webpack_require__.r(__webpack_exports__);
         axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/add-visited-country', {
           countryID: this.SelectedVisitedCuntry
         }).then(function (response) {
-          _this3.getVisitedCoutry();
+          _this3.getVisitedCountry();
         })["catch"](function (error) {
           console.log(error);
         });
@@ -19972,7 +19968,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getVisitedCoutry();
+    this.getVisitedCountry();
     this.getToVisitCoutry();
   }
 });
@@ -21400,7 +21396,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         },
         onSelect: _cache[1] || (_cache[1] = function ($event) {
-          return $options.VisitedCoutrySelected($event);
+          return _ctx.VisitedCountrySelected($event);
         })
       }, null, 8
       /* PROPS */
@@ -21433,7 +21429,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         },
         onSelect: _cache[4] || (_cache[4] = function ($event) {
-          return $options.CountryToVisitSelected($event);
+          return _ctx.CountryToVisitSelected($event);
         })
       }, null, 8
       /* PROPS */

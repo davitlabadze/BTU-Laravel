@@ -10,7 +10,7 @@ class CountryController extends Controller
     public function list(Request $request)
     {
         return ['results' => Country::select(['id', 'name as text'])
-        ->where('name', 'LIKE' , '%'.$request->input('term').'%')
+        ->where('name', 'LIKE' , '%'.$request->input('tern').'%')
         ->take(20)
         ->get()];
     }
