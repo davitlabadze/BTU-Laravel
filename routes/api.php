@@ -25,3 +25,4 @@ Route::get('/countries/visited',[CountryController::class,'visitedCounty'])->mid
 Route::get('/countries/tovisit',[CountryController::class,'toVistiCountry'])->middleware('auth:sanctum');
 
 Route::post('/add-visited-country',[CountryController::class,'addVisitedCountry'])->middleware('auth:sanctum');
+Route::post('/add-country-to-visit',[CountryController::class,'addCountryToVisit '])->middleware('auth:sanctum');

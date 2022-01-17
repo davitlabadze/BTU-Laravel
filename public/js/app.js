@@ -19912,6 +19912,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue3_select2_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue3-select2-component */ "./node_modules/vue3-select2-component/src/Select2.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -19930,7 +19934,7 @@ __webpack_require__.r(__webpack_exports__);
       countriesToVisit: []
     };
   },
-  methods: {
+  methods: (_methods = {
     // VisitedCountrySelected({id, text}){
     //     // console.log({id, text})
     // },
@@ -19950,23 +19954,36 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/countries/tovisit').then(function (response) {
         _this2.countriesToVisit = response.data;
       });
-    },
-    addVisitedCountry: function addVisitedCountry() {
-      var _this3 = this;
-
-      if (this.SelectedVisitedCuntry !== '') {
-        axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/add-visited-country', {
-          countryID: this.SelectedVisitedCuntry
-        }).then(function (response) {
-          _this3.getVisitedCountry();
-        })["catch"](function (error) {
-          console.log(error);
-        });
-      } else {
-        console.log('error');
-      }
     }
-  },
+  }, _defineProperty(_methods, "getVisitedCountry", function getVisitedCountry() {
+    var _this3 = this;
+
+    if (this.SelectedVisitedCuntry !== '') {
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/add-visited-country', {
+        countryID: this.SelectedVisitedCuntry
+      }).then(function (response) {
+        _this3.getVisitedCountry();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    } else {
+      console.log('error');
+    }
+  }), _defineProperty(_methods, "addCountryToVisit", function addCountryToVisit() {
+    var _this4 = this;
+
+    if (this.SelectedCountryToVisit !== '') {
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/add-country-to-visit', {
+        countryID: this.SelectedCountryToVisit
+      }).then(function (response) {
+        _this4.getToVisitCoutry();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    } else {
+      console.log('error');
+    }
+  }), _methods),
   created: function created() {
     this.getVisitedCountry();
     this.getToVisitCoutry();
@@ -21403,7 +21420,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         href: "javascript:void(0);",
         onClick: _cache[2] || (_cache[2] = function () {
-          return $options.addVisitedCountry && $options.addVisitedCountry.apply($options, arguments);
+          return _ctx.addVisitedCountry && _ctx.addVisitedCountry.apply(_ctx, arguments);
         }),
         "class": "px-1 ml-3 text-xl font-semibold text-white"
       }, _hoisted_13)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.visitedCountries, function (vr) {
@@ -21436,7 +21453,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         href: "javascript:void(0);",
         onClick: _cache[5] || (_cache[5] = function () {
-          return $options.addVisitedCountry && $options.addVisitedCountry.apply($options, arguments);
+          return $options.addCountryToVisit && $options.addCountryToVisit.apply($options, arguments);
         }),
         "class": "px-1 ml-3 text-xl font-semibold text-white"
       }, _hoisted_20)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.countriesToVisit, function (ctv) {

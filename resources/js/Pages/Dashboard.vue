@@ -36,8 +36,14 @@
                                         class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
                                     </div>
 
-                                    <div v-for="vr in visitedCountries" :key="vr.id0" class="mt-5 ">
-                                        <span class="block w-full pt-3 mb-1 border-b-2">{{ vr.name }}</span>
+                                    <div v-for="vc in visitedCountries" :key="vc.id0" class="mt-5 ">
+                                        <span class="block w-full pt-3 mb-1 border-b-2">{{ vc.name }}</span>
+                                        <span>
+                                            <a href="javascript:void(0)"
+                                            @click="removeVisitedCountry">
+                                            </a>
+
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +65,7 @@
                                         @select="CountryToVisitSelected($event)"
                                         />
                                         <a href="javascript:void(0);"
-                                        @click="addVisitedCountry"
+                                        @click="addCountryToVisit"
                                         class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
                                     </div>
                                      <div v-for="ctv in countriesToVisit" :key="ctv.id0" class="mt-5 ">
@@ -116,7 +122,7 @@ export default {
                     this.countriesToVisit = response.data;
                 });
         },
-        addVisitedCountry(){
+        getVisitedCountry(){
             if (this.SelectedVisitedCuntry !== '') {
                 axios.post('/api/add-visited-country',{
                     countryID: this.SelectedVisitedCuntry
@@ -128,7 +134,20 @@ export default {
             }else{
                 console.log('error');
             }
-        }
+        },
+        addCountryToVisit(){
+            if (this.SelectedCountryToVisit !== '') {
+                axios.post('/api/add-country-to-visit',{
+                    countryID: this.SelectedCountryToVisit
+                }).then((response) => {
+                    this.getToVisitCoutry();
+                }).catch(function(error){
+                    console.log(error)
+                })
+            }else{
+                console.log('error');
+            }
+        },
     },
     created(){
         this.getVisitedCountry();
