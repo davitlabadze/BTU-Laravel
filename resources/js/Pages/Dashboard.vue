@@ -24,7 +24,7 @@
                                         :settings="{
                                             width:'100%',
                                             ajax: {
-                                                url: '/api/countries/list',
+                                                url: '/api/country/list',
                                                 dataType: 'json'
                                             },
                                         }"
@@ -33,7 +33,7 @@
                                         />
                                         <a href="javascript:void(0);"
                                         @click="addVisitedCountry"
-                                        class="px-1 ml-3 text-xl font-semibold text-white "><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
+                                        class="px-1 ml-3 text-xl font-semibold text-white"><img src="https://img.icons8.com/ios/28/000000/plus--v2.png"/></a>
                                     </div>
 
                                     <div v-for="vc in visitedCountries" :key="vc.id0" class="mt-5 ">
@@ -104,12 +104,12 @@ export default {
         }
     },
     methods: {
-        // VisitedCountrySelected({id, text}){
-        //     // console.log({id, text})
-        // },
-        // CountryToVisitSelected({id, text}){
-        //     // console.log({id, text})
-        // },
+        VisitedCountrySelected({id, text}){
+            // console.log({id, text})
+        },
+        CountryToVisitSelected({id, text}){
+            // console.log({id, text})
+        },
         getVisitedCountry(){
             axios.get('/api/countries/visited')
             .then((response) => {
@@ -122,10 +122,10 @@ export default {
                     this.countriesToVisit = response.data;
                 });
         },
-        getVisitedCountry(){
-            if (this.SelectedVisitedCuntry !== '') {
+        addVisitedCountry(){
+            if (this.SelectedVisitedCountry !== '') {
                 axios.post('/api/add-visited-country',{
-                    countryID: this.SelectedVisitedCuntry
+                    countryID: this.SelectedVisitedCountry
                 }).then((response) => {
                     this.getVisitedCountry();
                 }).catch(function(error){

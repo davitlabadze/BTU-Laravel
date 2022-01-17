@@ -15,12 +15,12 @@ class CountryController extends Controller
         ->get()];
     }
 
-    public function visitedCounty(Request $request)
+    public function visitedCountries(Request $request)
     {
         return $request->user()->visitedCountries()->get();
     }
 
-    public function toVistiCountry(Request $request)
+    public function ToVisitCountries(Request $request)
     {
         return $request->user()->ToVisitCountries()->get();
     }
@@ -38,7 +38,7 @@ class CountryController extends Controller
     {
         $country = Country::findOrFile($request->input('countryID'));
         $request->user()
-            ->visitedCounty()
+            ->toVisitedCountries()
             ->attach($request->input('countryID'));
         $request->user()->save();
         return ['status' => 'success'];
